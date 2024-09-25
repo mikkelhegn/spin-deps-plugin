@@ -64,7 +64,7 @@ jobs:
 
   build:
     name: Build plugin
-    if: ${{ github.event.inputs.JOBS_TO_RUN == 'build' }}
+    if: ${{ github.event.inputs.JOBS_TO_RUN == 'build' || 'both' }}
     runs-on: ${{ matrix.config.os }}
     strategy:
       fail-fast: false
