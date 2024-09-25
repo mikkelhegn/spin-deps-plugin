@@ -13,7 +13,7 @@ on:
       - "*.md"
   workflow_dispatch:
     inputs:
-      jobs:
+      JOBS_TO_RUN:
         description: 'Build, Package or Both?'
         required: true
         default: 'both'
@@ -64,7 +64,7 @@ jobs:
 
   build:
     name: Build plugin
-    if: ${{ ( github.event_name == 'push' || 'pull_request' ) || ( github.event.inputs.jobs == 'build' || 'both' ) }}
+    if: ${{ github.event.inputs.JOBS_TO_RUN == 'build' }}
     runs-on: ${{ matrix.config.os }}
     strategy:
       fail-fast: false
